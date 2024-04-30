@@ -1,7 +1,10 @@
 import { Card } from "../Card/Card";
 import styles from "./Level.module.css"
+import {useState} from 'react'
 
 export function Level(props) {
+    const [level, setLevel] = useState(1)
+
     return (
         <section className={styles.level}>
 
@@ -9,7 +12,7 @@ export function Level(props) {
 
                 <div className={styles.levelSection}>
                     <p className={styles.levelLebel}>Level</p>
-                    <p className={styles.currentLevel}>1</p>
+                    <p className={styles.currentLevel}>{level}</p>
                 </div>
 
                 <div className={styles.timeSection}>
@@ -33,6 +36,7 @@ export function Level(props) {
                     <Card/>
                     <Card/>
                 </div>
+    
             </article>
         </section>
     )
