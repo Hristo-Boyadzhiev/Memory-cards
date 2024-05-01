@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <Routes>
-      {/* <Route path="/" element={<Timer />} /> */}
         <Route path="/" element={<Levels />} />
         <Route path="/levels/:level" element={<Level />} />
       </Routes>

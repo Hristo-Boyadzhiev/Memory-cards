@@ -17,9 +17,9 @@ export function Timer() {
 
     return (
         <>
-            <div>
+            <p>
                 <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-            </div>
+            </p>
            
             {/* <button onClick={start}>Start</button>
             <button onClick={pause}>Pause</button>

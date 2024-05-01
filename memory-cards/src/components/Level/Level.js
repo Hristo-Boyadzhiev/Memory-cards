@@ -4,6 +4,7 @@ import styles from "./Level.module.css"
 import { useState } from 'react'
 import { Timer } from "../Timer/Timer";
 
+
 export function Level(props) {
     // const [seconds, setSeconds] = useState(0);
     const { level } = useParams()
@@ -21,7 +22,8 @@ export function Level(props) {
 
                 <div className={styles.timeSection}>
                     <p className={styles.timeLebel}>Time</p>
-                    <p className={styles.time}><Timer/></p>
+                    {/* <p className={styles.time}><Timer/></p> */}
+                    <Timer/>
                 </div>
 
                 <div className={styles.bestTimeSection}>
