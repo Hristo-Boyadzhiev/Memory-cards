@@ -1,7 +1,7 @@
 import { Card } from "../Card/Card";
 import { PairCards } from "../PairCards/PairCards";
 import styles from "./Level.module.css"
-import {useState} from 'react'
+import { useState } from 'react'
 
 export function Level(props) {
     const [level, setLevel] = useState(1)
@@ -29,10 +29,11 @@ export function Level(props) {
             </article>
 
             <article className={styles.cards}>
-                <PairCards/>
-                <PairCards/>
-                <PairCards/>
-    
+                <ul className={styles.cardsList}>
+                    <li><PairCards /></li>
+                    <li><PairCards /></li>
+                    
+                </ul>
             </article>
         </section>
     )

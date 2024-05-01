@@ -1,0 +1,16 @@
+.cardContent {
+    width: 200px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    margin: 1em 0;
+    background: rgb(10, 10, 117);
+    border: 1px solid white;
+}
+
+.level {
+    font-size: 5em;
+    color: white
+}

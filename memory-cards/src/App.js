@@ -1,10 +1,13 @@
-import { Level } from "./components/Level/Level";
+import { Route, Routes } from "react-router-dom";
+import { Levels } from "./components/Levels/Levels";
 
 
 function App() {
   return (
-    <>    
-   <Level/>
+    <>
+      <Routes>
+        <Route path="/" element={<Levels />} />
+      </Routes>
     </>
 
   );
