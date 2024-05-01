@@ -1,10 +1,13 @@
-import { Card } from "../Card/Card";
+import { useParams } from "react-router-dom";
 import { PairCards } from "../PairCards/PairCards";
 import styles from "./Level.module.css"
 import { useState } from 'react'
+import { Timer } from "../Timer/Timer";
 
 export function Level(props) {
-    const [level, setLevel] = useState(1)
+    // const [seconds, setSeconds] = useState(0);
+    const { level } = useParams()
+
 
     return (
         <section className={styles.level}>
@@ -18,7 +21,7 @@ export function Level(props) {
 
                 <div className={styles.timeSection}>
                     <p className={styles.timeLebel}>Time</p>
-                    <p className={styles.time}>00:40</p>
+                    <p className={styles.time}><Timer/></p>
                 </div>
 
                 <div className={styles.bestTimeSection}>
@@ -32,7 +35,7 @@ export function Level(props) {
                 <ul className={styles.cardsList}>
                     <li><PairCards /></li>
                     <li><PairCards /></li>
-                    
+
                 </ul>
             </article>
         </section>

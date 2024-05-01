@@ -1,10 +1,14 @@
 import { LevelItem } from './LevelItem/LevelItem'
 import styles from './Levels.module.css'
+import {useNavigate} from 'react-router-dom'
+
 
 export function Levels(props) {
+    const navigate = useNavigate()
 
     function clickHandler(event) {
-        console.log(event.currentTarget.id)
+        const level = event.currentTarget.id
+        navigate(`/levels/${level}`)
     }
 
     return (
