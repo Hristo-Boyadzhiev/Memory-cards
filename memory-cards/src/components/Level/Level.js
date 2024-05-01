@@ -1,4 +1,5 @@
 import { Card } from "../Card/Card";
+import { PairCards } from "../PairCards/PairCards";
 import styles from "./Level.module.css"
 import {useState} from 'react'
 
@@ -28,14 +29,9 @@ export function Level(props) {
             </article>
 
             <article className={styles.cards}>
-                <div className={styles.column}>
-                    <Card/>
-                    <Card/>
-                </div>
-                <div className={styles.column}>
-                    <Card/>
-                    <Card/>
-                </div>
+                <PairCards/>
+                <PairCards/>
+                <PairCards/>
     
             </article>
         </section>
