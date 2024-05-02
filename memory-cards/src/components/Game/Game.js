@@ -19,6 +19,8 @@ export function Game(props) {
         setNumbers(shuffledPairs)
     }, [])
 
+    
+
     return (
         <section className={styles.level}>
             <div className={styles.container}>

@@ -6,15 +6,16 @@ export function CardItem({
     index
 }) {
     const [isClicked, setIsClicked] = useState(false)
-    const {numbers} = useNumbersContext()
+    const { numbers, clickedNumber, setClickedNumber } = useNumbersContext()
 
     function clickHandler(event) {
         setIsClicked(true)
-        setTimeout(() => {
-            setIsClicked(false)
-        }, 1000);
+            setTimeout(() => {
+                setIsClicked(false)
+            }, 1000);
     }
-    console.log(numbers)
+
+    // Трябва да измисля къде и как да се прави проверката
 
     return (
         <>

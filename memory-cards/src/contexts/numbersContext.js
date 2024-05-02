@@ -8,12 +8,11 @@ export function NumbersProvider({
     const [level, setLevel] = useState(null)
     const [numbers, setNumbers] = useState([])
 
-
     function getRandomNumberInRange(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
     }
 
-
+console.log(numbers)
     const numbersContextValues = {
         setLevel,
         setNumbers,
