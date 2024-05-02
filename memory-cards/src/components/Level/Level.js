@@ -2,11 +2,22 @@ import { useParams } from "react-router-dom";
 import { PairCards } from "../PairCards/PairCards";
 import styles from "./Level.module.css"
 import { Timer } from "../Timer/Timer";
+import { useNumbersContext } from "../../contexts/numbersContext";
+import { useEffect, useState } from "react";
 
 
 export function Level(props) {
-    const { level } = useParams()
+    const { getRandomNumberInRange, setLevel } = useNumbersContext()
+    let { level } = useParams()
+    const [numbers, setNumbers] = useState(Array.from({length: 2 * Number(level) + 2}))
 
+    useEffect(() => {
+        setLevel(level)
+       if (level> 1){
+        
+        setNumbers()
+       }
+    }, [level])
 
     let cards = []
 
@@ -14,9 +25,11 @@ export function Level(props) {
         for (let i = 0; i < (Number(level) + 1); i++) {
             cards.push(null)
         }
-
         cards = cards.map((card, i) => <li key={i}><PairCards /></li>)
     }
+
+   console.log(numbers)
+
 
     return (
         <section className={styles.level}>
@@ -42,8 +55,6 @@ export function Level(props) {
 
             <article className={styles.cards}>
                 <ul className={styles.cardsList}>
-                    {/* <li><PairCards /></li>
-                    <li><PairCards /></li> */}
                     {cards}
                 </ul>
             </article>

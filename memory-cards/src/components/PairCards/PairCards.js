@@ -2,7 +2,7 @@ import { Card } from "../Card/Card";
 
 export function PairCards(props) {
     return (
-        <div >
+        <div>
             <Card />
             <Card />
         </div>

@@ -1,6 +1,7 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
 
-.card {
+.card,
+.clickedCard {
     width: 145px;
     height: 150px;
     display: flex;
@@ -8,8 +9,21 @@
     align-items: center;
     border-radius: 0.5em;
     margin: 1em 0;
-    background: rgb(10, 10, 117);
     border: 1px solid white;
 }
+
+.card {
+    background: rgb(10, 10, 117);
+}
+
+.clickedCard {
+    background: white;
+}
+
+.number {
+    font-size: 3em;
+}
+
+
 
 
