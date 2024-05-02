@@ -2,13 +2,13 @@
 
 .card,
 .clickedCard {
-    width: 145px;
-    height: 150px;
+    width: 143px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 0.5em;
-    margin: 1em 0;
+    margin: 0;
     border: 1px solid white;
 }
 

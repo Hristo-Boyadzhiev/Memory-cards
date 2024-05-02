@@ -3,15 +3,15 @@ import { useStopwatch } from 'react-timer-hook';
 
 export function Timer() {
     const {
-        totalSeconds,
+        // totalSeconds,
         seconds,
         minutes,
         hours,
-        days,
-        isRunning,
-        start,
-        pause,
-        reset,
+        // days,
+        // isRunning,
+        // start,
+        // pause,
+        // reset,
     } = useStopwatch({ autoStart: true });
 
 
