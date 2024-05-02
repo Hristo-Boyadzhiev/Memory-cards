@@ -42,7 +42,7 @@
 }
 
 .cards {
-    flex-basis: 80%;
+    flex-basis: 85%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
