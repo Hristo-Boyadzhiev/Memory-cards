@@ -1,25 +1,62 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './CardItem.module.css'
 import { useNumbersContext } from '../../../contexts/numbersContext'
 
 export function CardItem({
     index
 }) {
+    const [isVisible, setIsVisible] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
-    const { numbers, clickedNumber, setClickedNumber } = useNumbersContext()
+    const {
+        numbers,
+        clickedFirstNumber,
+        setClickedFirstNumber,
+        clickedSecondNumber,
+        setClickedSecondNumber,
+        isWin,
+        isResetNumbers,
+        setIsResetNumbers
+    } = useNumbersContext()
 
     function clickHandler(event) {
-        setIsClicked(true)
-            setTimeout(() => {
-                setIsClicked(false)
-            }, 1000);
+        if (isVisible) {
+            // setIsVisible(false)
+            // setIsClicked(false)
+        } else {
+            if (!isClicked) {
+                setIsVisible(true)
+                setIsClicked(true)
+                if (clickedFirstNumber) {
+                    setClickedSecondNumber(numbers[index])
+                } else {
+                    setClickedFirstNumber(numbers[index])
+                }
+            }
+        }
     }
 
-    // Трябва да измисля къде и как да се прави проверката
+    useEffect(() => {
+        if (isWin) {
+            console.log('da')
+        } else {
+            setTimeout(() => {
+                setIsVisible(false)
+                setIsClicked(false)
+            }, 1000);
+        }
+
+        if (isResetNumbers) {
+            setTimeout(() => {
+                setIsVisible(false)
+                setIsClicked(false)
+                setIsResetNumbers(false)
+            }, 200)
+        }
+    }, [isResetNumbers, isWin])
 
     return (
         <>
-            {isClicked
+            {isVisible
                 ? <div className={styles.clickedCard} onClick={clickHandler}>
                     <p className={styles.number}>{numbers[index]}</p>
                 </div>
