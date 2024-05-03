@@ -14,45 +14,37 @@ export function CardItem({
         clickedSecondNumber,
         setClickedSecondNumber,
         isWin,
-        isResetNumbers,
-        setIsResetNumbers
+        setIsWin,
+        // isResetNumbers,
+        // setIsResetNumbers
     } = useNumbersContext()
 
     function clickHandler(event) {
-        if (isVisible) {
-            // setIsVisible(false)
-            // setIsClicked(false)
-        } else {
-            if (!isClicked) {
-                setIsVisible(true)
-                setIsClicked(true)
-                if (clickedFirstNumber) {
-                    setClickedSecondNumber(numbers[index])
-                } else {
-                    setClickedFirstNumber(numbers[index])
-                }
+        if (!isVisible && !isClicked) {
+            setIsVisible(true)
+            setIsClicked(true)
+            if (clickedFirstNumber) {
+                setClickedSecondNumber(numbers[index])
+            } else {
+                setClickedFirstNumber(numbers[index])
             }
         }
     }
 
     useEffect(() => {
-        if (isWin) {
-            console.log('da')
-        } else {
-            setTimeout(() => {
-                setIsVisible(false)
-                setIsClicked(false)
-            }, 1000);
+        setIsVisible(false)
+        setIsClicked(false)
+        setClickedFirstNumber(null)
+        setClickedSecondNumber(null)
+        if(isWin){
+
         }
 
-        if (isResetNumbers) {
-            setTimeout(() => {
-                setIsVisible(false)
-                setIsClicked(false)
-                setIsResetNumbers(false)
-            }, 200)
-        }
-    }, [isResetNumbers, isWin])
+        // if (isResetNumbers) {
+        //     console.log('da')
+        //     setIsResetNumbers(false)
+        // }
+    }, [isWin])
 
     return (
         <>
@@ -60,11 +52,13 @@ export function CardItem({
                 ? <div className={styles.clickedCard} onClick={clickHandler}>
                     <p className={styles.number}>{numbers[index]}</p>
                 </div>
+
                 : <div className={styles.card} onClick={clickHandler}>
                     <div className={styles.content}>
                         <i className="fa-solid fa-star" style={{ fontSize: '3em', color: 'white' }}></i>
                     </div>
                 </div>
+
             }
         </>
     )

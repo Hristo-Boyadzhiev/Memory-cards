@@ -2,41 +2,70 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const numbersContext = createContext()
 
+function getRandomNumberInRange(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 export function NumbersProvider({
     children
 }) {
+    const [totalCardItems, setTotalCardItems] = useState(28)
     const [numbers, setNumbers] = useState([])
     const [clickedFirstNumber, setClickedFirstNumber] = useState(null)
     const [clickedSecondNumber, setClickedSecondNumber] = useState(null)
     const [isWin, setIsWin] = useState(null)
-    const [isResetNumbers, setIsResetNumbers] = useState(false)
+    // const [isResetNumbers, setIsResetNumbers] = useState(false)
 
     useEffect(() => {
-        if((clickedFirstNumber !== null && clickedSecondNumber !== null)){
+        const newPairs = []
+
+        for (let i = 0; i < 28; i += 2) {
+            const randomNumber = getRandomNumberInRange(1, 99);
+            newPairs.push(randomNumber, randomNumber)
+        }
+        const shuffledPairs = newPairs.sort(() => Math.random() - 0.5);
+        setNumbers(shuffledPairs)
+    }, [])
+
+    useEffect(() => {
+        if ((clickedFirstNumber !== null && clickedSecondNumber !== null)) {
 
             if (clickedFirstNumber === clickedSecondNumber) {
                 console.log('WINNER')
-                const firstNumberIndex = numbers.indexOf(clickedFirstNumber)
-                let newArray = [...numbers]
-                const secondNumberIndex = numbers.indexOf(clickedSecondNumber)
-                // splice не го използвам както трябва
-                newArray = newArray.splice(firstNumberIndex, 1)
-                console.log(newArray)
-                setNumbers(newArray)
+                console.log(`FirstNumber:${clickedFirstNumber}`)
+                console.log(`SecondNumber:${clickedSecondNumber}`)
                 setIsWin(true)
             } else {
                 setClickedFirstNumber(null)
                 setClickedSecondNumber(null)
-                setIsResetNumbers(true)
+                // setIsResetNumbers(true)
             }
         }
     }, [clickedSecondNumber])
 
-    function getRandomNumberInRange(min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
+    if (isWin) {
+        // Не изтрива правилните елементи
+        const firstNumberIndex = numbers.indexOf(clickedFirstNumber) 
+        const secondNumberIndex = numbers.lastIndexOf(clickedSecondNumber) 
+        numbers.splice(firstNumberIndex, 1)
+        setNumbers(numbers)
+        numbers.splice(secondNumberIndex, 1)
+        setNumbers(numbers)
+
+        setClickedFirstNumber(null)
+        setClickedSecondNumber(null)
+        // setIsResetNumbers(true)
+
+        if (totalCardItems > 0) {
+            setTotalCardItems(numbers.length)
+            setIsWin(false)
+        }
     }
 
+
+
     console.log(numbers)
+
     const numbersContextValues = {
         numbers,
         setNumbers,
@@ -45,9 +74,11 @@ export function NumbersProvider({
         clickedSecondNumber,
         setClickedSecondNumber,
         isWin,
-        isResetNumbers,
-        setIsResetNumbers,
-        getRandomNumberInRange
+        setIsWin,
+        // isResetNumbers,
+        // setIsResetNumbers,
+        totalCardItems,
+        setTotalCardItems
     }
 
     return (

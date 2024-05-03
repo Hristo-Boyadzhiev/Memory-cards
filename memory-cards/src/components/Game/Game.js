@@ -1,26 +1,9 @@
 import styles from "./Game.module.css"
 import { Timer } from "../Timer/Timer";
-import { useNumbersContext } from "../../contexts/numbersContext";
 import { useEffect } from "react";
 import { CardList } from "../CardList/CardList";
 
 export function Game(props) {
-    const { getRandomNumberInRange, setNumbers } = useNumbersContext()
-
-    useEffect(() => {
-
-        const newPairs = []
-
-        for (let i = 0; i < 28; i += 2) {
-            const randomNumber = getRandomNumberInRange(1, 99);
-            newPairs.push(randomNumber, randomNumber)
-        }
-        const shuffledPairs = newPairs.sort(() => Math.random() - 0.5);
-        setNumbers(shuffledPairs)
-    }, [])
-
-    
-
     return (
         <section className={styles.level}>
             <div className={styles.container}>
