@@ -15,7 +15,7 @@ export function NumbersProvider({
     const [clickedSecondNumber, setClickedSecondNumber] = useState(null)
     const [isWin, setIsWin] = useState(null)
     const [isResetNumbers, setIsResetNumbers] = useState(false)
-    const {completedGame, setCompletedGame} = useState(false)
+    const [completedGame, setCompletedGame] = useState(false)
 
     useEffect(() => {
         const newPairs = []
@@ -53,10 +53,12 @@ export function NumbersProvider({
 
         if (totalCardItems > 0) {
             setTotalCardItems(numbers.length)
+            if(numbers.length === 0){
+                setCompletedGame(true)
+            }
+
             setIsWin(false)
-        } else {
-            setCompletedGame(true)
-        }
+        } 
 
         setClickedFirstNumber(null)
         setClickedSecondNumber(null)

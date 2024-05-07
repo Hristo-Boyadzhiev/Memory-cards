@@ -15,24 +15,25 @@ export function Timer() {
         reset,
     } = useStopwatch({ autoStart: true });
 
-    const {completedGame} = useNumbersContext()
-    const [isStop, setIsStop] = useState()
+    const { completedGame } = useNumbersContext()
+    const [isStop, setIsStop] = useState(false)
 
-    useEffect(()=>{
-        if(completedGame){
+    useEffect(() => {
+        if (completedGame) {
+            setIsStop(true)
             pause()
         }
     }, [completedGame])
 
     return (
         <>
-        {isStop ?<p>Stop</p>
-           : <p>
-                <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-            </p>
+            {isStop ? <p>Stop</p>
+                : <p>
+                    <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+                </p>
 
-    }
-           
+            }
+
             {/* <button onClick={start}>Start</button>
             <button onClick={pause}>Pause</button>
             <button onClick={reset}>Reset</button> */}
