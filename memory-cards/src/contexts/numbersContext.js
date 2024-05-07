@@ -16,9 +16,11 @@ export function NumbersProvider({
     const [clickedSecondNumber, setClickedSecondNumber] = useState(null)
     const [isWin, setIsWin] = useState(null)
     const [isResetNumbers, setIsResetNumbers] = useState(false)
-    const [completedGame, setCompletedGame] = useState(false)
+    const [isCompletedGame, setIsCompletedGame] = useState(false)
     const [currentTime, setCurrentTime] = useState(0)
     const [bestTime, setBestTime] = useState(0)
+    const [currentTimeForRendering, setCurrentTimeForRendering] = useState('0:0:0')
+    const [bestTimeForRendering, setBestTimeForRendering] = useState('0:0:0')
     const [isNewGame, setIsNewGame] = useState(false)
 
     useEffect(() => {
@@ -43,17 +45,13 @@ export function NumbersProvider({
             setClickedSecondNumber(null)
             setIsWin(null)
             setIsResetNumbers(false)
-            setCompletedGame(false)
+            setIsCompletedGame(false)
             setCurrentTime(0)
-            setBestTime(0)
             setIsNewGame(false)
 
         } else {
             if ((clickedFirstNumber !== null && clickedSecondNumber !== null)) {
                 if (clickedFirstNumber === clickedSecondNumber) {
-                    // console.log('WINNER')
-                    // console.log(`FirstNumber:${clickedFirstNumber}`)
-                    // console.log(`SecondNumber:${clickedSecondNumber}`)
                     setIsWin(true)
                 } else {
                     setClickedFirstNumber(null)
@@ -62,8 +60,19 @@ export function NumbersProvider({
                 }
             }
 
-            if (currentTime > bestTime) {
-                setBestTime(currentTime)
+            // if (currentTime !== 0) {
+            //     if (bestTime === 0) {
+            //         setBestTime(currentTime)
+            //     } else if (currentTime < bestTime) {
+            //         setBestTime(currentTime)
+            //     }
+            // }
+
+            if (currentTime !== 0) {
+                if (bestTime === 0 || (currentTime < bestTime)) {
+                    setBestTime(currentTime)
+                    setBestTimeForRendering(currentTimeForRendering)
+                }
             }
         }
     }, [clickedSecondNumber, currentTime, isNewGame])
@@ -79,12 +88,11 @@ export function NumbersProvider({
         if (totalCardItems > 0) {
             setTotalCardItems(numbers.length)
             if (numbers.length === 0) {
-                setCompletedGame(true)
-
+                setIsCompletedGame(true)
             }
-
             setIsWin(false)
         }
+        
 
         setClickedFirstNumber(null)
         setClickedSecondNumber(null)
@@ -107,11 +115,14 @@ export function NumbersProvider({
         setIsResetNumbers,
         totalCardItems,
         setTotalCardItems,
-        completedGame,
+        isCompletedGame,
         isNewGame,
         setIsNewGame,
         setCurrentTime,
-        bestTime
+        bestTime,
+        currentTimeForRendering,
+        setCurrentTimeForRendering,
+        bestTimeForRendering
     }
 
     return (

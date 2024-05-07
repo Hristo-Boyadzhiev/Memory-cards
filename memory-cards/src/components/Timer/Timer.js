@@ -15,14 +15,21 @@ export function Timer() {
         reset,
     } = useStopwatch({ autoStart: true });
 
-    const { completedGame, setCurrentTime } = useNumbersContext()
+    const { isCompletedGame, setCurrentTime, setCurrentTimeForRendering, isNewGame } = useNumbersContext()
 
     useEffect(() => {
-        if (completedGame) {
+        if (isCompletedGame) {
             pause()
             setCurrentTime(totalSeconds)
+            setCurrentTimeForRendering(`${hours}:${minutes}:${seconds}`)
         }
-    }, [completedGame])
+
+        if(isNewGame){
+            reset()
+            setCurrentTime(0)
+        }
+
+    }, [isCompletedGame, isNewGame])
 
 
     return (

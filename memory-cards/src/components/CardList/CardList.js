@@ -4,7 +4,7 @@ import styles from "./CardList.module.css"
 
 export function CardList(props) {
 
-    const { totalCardItems, completedGame, setIsNewGame } = useNumbersContext()
+    const { totalCardItems, isCompletedGame, setIsNewGame } = useNumbersContext()
 
     const cardsArray = Array.from({ length: totalCardItems })
         .map((card, i) => <li key={i}><CardItem index={i} /></li>)
@@ -15,7 +15,7 @@ export function CardList(props) {
 
     return (
         <>
-            {completedGame
+            {isCompletedGame
                 ? 
                 <div className={styles.newGameContainer}>
                     <button onClick={newGameHandler} className={styles.newGame}>New Game</button>
