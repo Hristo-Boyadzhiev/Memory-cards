@@ -14,7 +14,8 @@ export function NumbersProvider({
     const [clickedFirstNumber, setClickedFirstNumber] = useState(null)
     const [clickedSecondNumber, setClickedSecondNumber] = useState(null)
     const [isWin, setIsWin] = useState(null)
-    // const [isResetNumbers, setIsResetNumbers] = useState(false)
+    const [isResetNumbers, setIsResetNumbers] = useState(false)
+    const {completedGame, setCompletedGame} = useState(false)
 
     useEffect(() => {
         const newPairs = []
@@ -29,7 +30,6 @@ export function NumbersProvider({
 
     useEffect(() => {
         if ((clickedFirstNumber !== null && clickedSecondNumber !== null)) {
-
             if (clickedFirstNumber === clickedSecondNumber) {
                 console.log('WINNER')
                 console.log(`FirstNumber:${clickedFirstNumber}`)
@@ -38,30 +38,30 @@ export function NumbersProvider({
             } else {
                 setClickedFirstNumber(null)
                 setClickedSecondNumber(null)
-                // setIsResetNumbers(true)
+                setIsResetNumbers(true)
             }
         }
     }, [clickedSecondNumber])
 
     if (isWin) {
-        // Не изтрива правилните елементи
-        const firstNumberIndex = numbers.indexOf(clickedFirstNumber) 
-        const secondNumberIndex = numbers.lastIndexOf(clickedSecondNumber) 
+        const firstNumberIndex = numbers.indexOf(Number(clickedFirstNumber)) 
         numbers.splice(firstNumberIndex, 1)
-        setNumbers(numbers)
+
+        const secondNumberIndex = numbers.lastIndexOf(clickedSecondNumber) 
         numbers.splice(secondNumberIndex, 1)
         setNumbers(numbers)
-
-        setClickedFirstNumber(null)
-        setClickedSecondNumber(null)
-        // setIsResetNumbers(true)
 
         if (totalCardItems > 0) {
             setTotalCardItems(numbers.length)
             setIsWin(false)
+        } else {
+            setCompletedGame(true)
         }
-    }
 
+        setClickedFirstNumber(null)
+        setClickedSecondNumber(null)
+        setIsResetNumbers(true)
+    }
 
 
     console.log(numbers)
@@ -75,10 +75,11 @@ export function NumbersProvider({
         setClickedSecondNumber,
         isWin,
         setIsWin,
-        // isResetNumbers,
-        // setIsResetNumbers,
+        isResetNumbers,
+        setIsResetNumbers,
         totalCardItems,
-        setTotalCardItems
+        setTotalCardItems,
+        completedGame
     }
 
     return (

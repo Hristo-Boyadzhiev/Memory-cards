@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
+import { useNumbersContext } from '../../contexts/numbersContext';
 
 export function Timer() {
     const {
@@ -10,16 +11,27 @@ export function Timer() {
         // days,
         // isRunning,
         // start,
-        // pause,
-        // reset,
+        pause,
+        reset,
     } = useStopwatch({ autoStart: true });
 
+    const {completedGame} = useNumbersContext()
+    const [isStop, setIsStop] = useState()
+
+    useEffect(()=>{
+        if(completedGame){
+            pause()
+        }
+    }, [completedGame])
 
     return (
         <>
-            <p>
+        {isStop ?<p>Stop</p>
+           : <p>
                 <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
             </p>
+
+    }
            
             {/* <button onClick={start}>Start</button>
             <button onClick={pause}>Pause</button>
