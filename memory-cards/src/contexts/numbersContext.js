@@ -34,7 +34,6 @@ export function NumbersProvider({
     }, [isNewGame])
 
     useEffect(() => {
-
         if (isNewGame) {
             setTotalCardItems(24)
             setNumbers([])
@@ -45,7 +44,6 @@ export function NumbersProvider({
             setIsCompletedGame(false)
             setCurrentTime(0)
             setIsNewGame(false)
-
         } else {
             if ((clickedFirstNumber !== null && clickedSecondNumber !== null)) {
                 if (clickedFirstNumber === clickedSecondNumber) {
@@ -67,7 +65,7 @@ export function NumbersProvider({
     }, [clickedSecondNumber, currentTime, isNewGame])
 
     if (isWin) {
-        const firstNumberIndex = numbers.indexOf(Number(clickedFirstNumber))
+        const firstNumberIndex = numbers.indexOf(clickedFirstNumber)
         numbers.splice(firstNumberIndex, 1)
 
         const secondNumberIndex = numbers.lastIndexOf(clickedSecondNumber)
@@ -76,40 +74,34 @@ export function NumbersProvider({
 
         if (totalCardItems > 0) {
             setTotalCardItems(numbers.length)
+
             if (numbers.length === 0) {
                 setIsCompletedGame(true)
             }
+
             setIsWin(false)
         }
-        
 
         setClickedFirstNumber(null)
         setClickedSecondNumber(null)
         setIsResetNumbers(true)
     }
 
-
     console.log(numbers)
 
     const numbersContextValues = {
         numbers,
-        setNumbers,
         clickedFirstNumber,
         setClickedFirstNumber,
-        clickedSecondNumber,
         setClickedSecondNumber,
         isWin,
-        setIsWin,
         isResetNumbers,
         setIsResetNumbers,
         totalCardItems,
-        setTotalCardItems,
         isCompletedGame,
         isNewGame,
         setIsNewGame,
         setCurrentTime,
-        bestTime,
-        currentTimeForRendering,
         setCurrentTimeForRendering,
         bestTimeForRendering
     }

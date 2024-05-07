@@ -8,9 +8,6 @@ export function Timer() {
         seconds,
         minutes,
         hours,
-        // days,
-        // isRunning,
-        // start,
         pause,
         reset,
     } = useStopwatch({ autoStart: true });

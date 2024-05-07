@@ -7,15 +7,13 @@ export function CardItem({
 }) {
     const [isVisible, setIsVisible] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
-    const {isNewGame} = useNumbersContext()
+    const { isNewGame } = useNumbersContext()
     const {
         numbers,
         clickedFirstNumber,
         setClickedFirstNumber,
-        clickedSecondNumber,
         setClickedSecondNumber,
         isWin,
-        setIsWin,
         isResetNumbers,
         setIsResetNumbers
     } = useNumbersContext()
@@ -35,27 +33,22 @@ export function CardItem({
     useEffect(() => {
         setIsVisible(false)
         setIsClicked(false)
-        // setClickedFirstNumber(null)
-        // setClickedSecondNumber(null)
-        if(isWin){
-
-        }
 
         if (isResetNumbers) {
             setIsResetNumbers(false)
-            setIsVisible(false)
-            setIsClicked(false)
         }
     }, [isWin, isResetNumbers, isNewGame])
 
     return (
         <>
             {isVisible
-                ? <div className={styles.clickedCard} onClick={clickHandler}>
+                ?
+                <div className={styles.clickedCard}>
                     <p className={styles.number}>{numbers[index]}</p>
                 </div>
 
-                : <div className={styles.card} onClick={clickHandler}>
+                :
+                <div className={styles.card} onClick={clickHandler}>
                     <div className={styles.content}>
                         <i className="fa-solid fa-star" style={{ fontSize: '3em', color: 'white' }}></i>
                     </div>
