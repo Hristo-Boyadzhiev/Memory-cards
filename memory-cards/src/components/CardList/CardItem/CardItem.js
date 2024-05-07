@@ -7,6 +7,7 @@ export function CardItem({
 }) {
     const [isVisible, setIsVisible] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
+    const {isNewGame} = useNumbersContext()
     const {
         numbers,
         clickedFirstNumber,
@@ -44,9 +45,8 @@ export function CardItem({
             setIsResetNumbers(false)
             setIsVisible(false)
             setIsClicked(false)
-
         }
-    }, [isWin, isResetNumbers])
+    }, [isWin, isResetNumbers, isNewGame])
 
     return (
         <>

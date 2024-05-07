@@ -2,8 +2,12 @@ import styles from "./Game.module.css"
 import { Timer } from "../Timer/Timer";
 import { useEffect } from "react";
 import { CardList } from "../CardList/CardList";
+import { useNumbersContext } from "../../contexts/numbersContext";
 
 export function Game(props) {
+
+    const {bestTime} = useNumbersContext()
+
     return (
         <section className={styles.level}>
             <div className={styles.container}>
@@ -22,7 +26,7 @@ export function Game(props) {
 
                     <div className={styles.bestTimeSection}>
                         <p className={styles.bestTimeLebel}>Best Time</p>
-                        <p className={styles.bestTime}>00:20</p>
+                        <p className={styles.bestTime}>{bestTime}</p>
                     </div>
 
                 </article>
