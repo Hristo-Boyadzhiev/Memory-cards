@@ -2,7 +2,7 @@
 
 .card,
 .clickedCard {
-    width: 143px;
+    width: 150px;
     height: 200px;
     display: flex;
     justify-content: center;

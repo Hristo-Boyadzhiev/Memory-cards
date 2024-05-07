@@ -14,11 +14,6 @@ export function Game(props) {
 
                 <article className={styles.info}>
 
-                    <div className={styles.levelSection}>
-                        <p className={styles.levelLebel}>Level</p>
-                        <p className={styles.currentLevel}>1</p>
-                    </div>
-
                     <div className={styles.timeSection}>
                         <p className={styles.timeLebel}>Time</p>
                         <Timer />
@@ -26,7 +21,6 @@ export function Game(props) {
 
                     <div className={styles.bestTimeSection}>
                         <p className={styles.bestTimeLebel}>Best Time</p>
-                        {/* <p className={styles.bestTime}>{bestTime}</p> */}
                         <p className={styles.bestTime}>{bestTimeForRendering}</p>
                     </div>
 

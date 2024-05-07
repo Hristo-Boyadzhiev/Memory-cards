@@ -9,8 +9,7 @@ function getRandomNumberInRange(min, max) {
 export function NumbersProvider({
     children
 }) {
-    // const [totalCardItems, setTotalCardItems] = useState(28)
-    const [totalCardItems, setTotalCardItems] = useState(10)
+    const [totalCardItems, setTotalCardItems] = useState(24)
     const [numbers, setNumbers] = useState([])
     const [clickedFirstNumber, setClickedFirstNumber] = useState(null)
     const [clickedSecondNumber, setClickedSecondNumber] = useState(null)
@@ -26,8 +25,7 @@ export function NumbersProvider({
     useEffect(() => {
         const newPairs = []
 
-        // for (let i = 0; i < 28; i += 2) {
-        for (let i = 0; i < 10; i += 2) {
+        for (let i = 0; i < 24; i += 2) {
             const randomNumber = getRandomNumberInRange(1, 99);
             newPairs.push(randomNumber, randomNumber)
         }
@@ -38,8 +36,7 @@ export function NumbersProvider({
     useEffect(() => {
 
         if (isNewGame) {
-            setTotalCardItems(10)
-            // setTotalCardItems(28)
+            setTotalCardItems(24)
             setNumbers([])
             setClickedFirstNumber(null)
             setClickedSecondNumber(null)
@@ -59,14 +56,6 @@ export function NumbersProvider({
                     setIsResetNumbers(true)
                 }
             }
-
-            // if (currentTime !== 0) {
-            //     if (bestTime === 0) {
-            //         setBestTime(currentTime)
-            //     } else if (currentTime < bestTime) {
-            //         setBestTime(currentTime)
-            //     }
-            // }
 
             if (currentTime !== 0) {
                 if (bestTime === 0 || (currentTime < bestTime)) {
