@@ -14,7 +14,7 @@ export function NumbersProvider({
     const [clickedFirstNumber, setClickedFirstNumber] = useState(null)
     const [clickedSecondNumber, setClickedSecondNumber] = useState(null)
 
-const [isWin, setIsWin] = useState(false)
+    const [isWin, setIsWin] = useState(false)
 
     const [isResetNumbers, setIsResetNumbers] = useState(false)
     const [isCompletedGame, setIsCompletedGame] = useState(false)
@@ -46,7 +46,7 @@ const [isWin, setIsWin] = useState(false)
     useEffect(() => {
         if ((clickedFirstNumber !== null && clickedSecondNumber !== null)) {
             if (clickedFirstNumber === clickedSecondNumber) {
-                
+
                 const firstNumberIndex = numbers.indexOf(clickedFirstNumber)
                 numbers.splice(firstNumberIndex, 1)
 
