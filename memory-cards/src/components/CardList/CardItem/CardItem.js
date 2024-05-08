@@ -13,13 +13,12 @@ export function CardItem({
         clickedFirstNumber,
         setClickedFirstNumber,
         setClickedSecondNumber,
-        isWin,
         isResetNumbers,
         setIsResetNumbers
     } = useNumbersContext()
 
     function clickHandler(event) {
-        if (!isVisible && !isClicked) {
+        if (!isResetNumbers && !isVisible && !isClicked) {
             setIsVisible(true)
             setIsClicked(true)
             if (clickedFirstNumber) {
@@ -27,18 +26,16 @@ export function CardItem({
             } else {
                 setClickedFirstNumber(numbers[index])
             }
-        } 
+        }
     }
 
     useEffect(() => {
+       setTimeout(() => {
         setIsVisible(false)
         setIsClicked(false)
-
-        if (isResetNumbers) {
-            setIsResetNumbers(false)
-        }
-    // }, [isWin, isResetNumbers, isNewGame])
-}, [isResetNumbers, isNewGame])
+        setIsResetNumbers(false)
+       }, 500);
+    }, [isResetNumbers, isNewGame])
 
     return (
         <>

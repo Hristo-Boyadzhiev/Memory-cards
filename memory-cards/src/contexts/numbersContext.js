@@ -26,7 +26,6 @@ export function NumbersProvider({
         setNumbers([])
         setClickedFirstNumber(null)
         setClickedSecondNumber(null)
-        setIsResetNumbers(false)
         setIsCompletedGame(false)
         setCurrentTime(0)
         setIsNewGame(false)
