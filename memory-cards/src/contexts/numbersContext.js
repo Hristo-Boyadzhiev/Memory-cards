@@ -23,9 +23,19 @@ export function NumbersProvider({
     const [isNewGame, setIsNewGame] = useState(false)
 
     useEffect(() => {
+        setTotalCardItems(24)
+        setNumbers([])
+        setClickedFirstNumber(null)
+        setClickedSecondNumber(null)
+        setIsWin(null)
+        setIsResetNumbers(false)
+        setIsCompletedGame(false)
+        setCurrentTime(0)
+        setIsNewGame(false)
+
         const newPairs = []
 
-        for (let i = 0; i < 24; i += 2) {
+        for (let i = 0; i < totalCardItems; i += 2) {
             const randomNumber = getRandomNumberInRange(1, 99);
             newPairs.push(randomNumber, randomNumber)
         }
@@ -34,58 +44,38 @@ export function NumbersProvider({
     }, [isNewGame])
 
     useEffect(() => {
-        if (isNewGame) {
-            setTotalCardItems(24)
-            setNumbers([])
+        if ((clickedFirstNumber !== null && clickedSecondNumber !== null)) {
+            if (clickedFirstNumber === clickedSecondNumber) {
+                setIsWin(true)
+                const firstNumberIndex = numbers.indexOf(clickedFirstNumber)
+                numbers.splice(firstNumberIndex, 1)
+
+                const secondNumberIndex = numbers.lastIndexOf(clickedSecondNumber)
+                numbers.splice(secondNumberIndex, 1)
+                setNumbers(numbers)
+
+                if (totalCardItems > 0) {
+                    setTotalCardItems(numbers.length)
+
+                    if (numbers.length === 0) {
+                        setIsCompletedGame(true)
+                    }
+
+                    setIsWin(false)
+                }
+            }
             setClickedFirstNumber(null)
             setClickedSecondNumber(null)
-            setIsWin(null)
-            setIsResetNumbers(false)
-            setIsCompletedGame(false)
-            setCurrentTime(0)
-            setIsNewGame(false)
-        } else {
-            if ((clickedFirstNumber !== null && clickedSecondNumber !== null)) {
-                if (clickedFirstNumber === clickedSecondNumber) {
-                    setIsWin(true)
-                } else {
-                    setClickedFirstNumber(null)
-                    setClickedSecondNumber(null)
-                    setIsResetNumbers(true)
-                }
-            }
-
-            if (currentTime !== 0) {
-                if (bestTime === 0 || (currentTime < bestTime)) {
-                    setBestTime(currentTime)
-                    setBestTimeForRendering(currentTimeForRendering)
-                }
-            }
-        }
-    }, [clickedSecondNumber, currentTime, isNewGame])
-
-    if (isWin) {
-        const firstNumberIndex = numbers.indexOf(clickedFirstNumber)
-        numbers.splice(firstNumberIndex, 1)
-
-        const secondNumberIndex = numbers.lastIndexOf(clickedSecondNumber)
-        numbers.splice(secondNumberIndex, 1)
-        setNumbers(numbers)
-
-        if (totalCardItems > 0) {
-            setTotalCardItems(numbers.length)
-
-            if (numbers.length === 0) {
-                setIsCompletedGame(true)
-            }
-
-            setIsWin(false)
+            setIsResetNumbers(true)
         }
 
-        setClickedFirstNumber(null)
-        setClickedSecondNumber(null)
-        setIsResetNumbers(true)
-    }
+        if (currentTime !== 0) {
+            if (bestTime === 0 || (currentTime < bestTime)) {
+                setBestTime(currentTime)
+                setBestTimeForRendering(currentTimeForRendering)
+            }
+        }
+    }, [clickedSecondNumber, currentTime])
 
     console.log(numbers)
 
