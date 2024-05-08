@@ -3,8 +3,6 @@
 
 .card,
 .clickedCard {
-    width: 150px;
-    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,21 +16,55 @@
     background: rgb(10, 10, 117);
 }
 
-.card:hover {
-    background: rgb(77, 77, 161);
-    transition: 0.3s ease-in-out;
-}
-
 .clickedCard {
     background: white;
-}
-
-.clickedCard:hover {
-    background: lightgray;
-    opacity: 0.4;
 }
 
 .number {
     font-family: Share Tech;
     font-size: 4em;
+}
+
+@media (max-width: 500px) {
+
+    .card,
+    .clickedCard {
+        width: 50px;
+        height: 80px;
+    }
+
+    .number {
+        font-size: 2.5em;
+    }
+}
+
+@media (min-width: 500px) {
+
+    .card,
+    .clickedCard {
+        width: 90px;
+        height: 150px;
+    }
+}
+
+@media (min-width: 550px) {
+
+    .card,
+    .clickedCard {
+        width: 150px;
+        height: 200px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card:hover {
+        background: rgb(77, 77, 161);
+        transition: 0.3s ease-in-out;
+    }
+
+    .clickedCard:hover {
+        background: lightgray;
+        opacity: 0.4;
+    }
+
 }
