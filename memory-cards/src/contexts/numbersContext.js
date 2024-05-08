@@ -13,7 +13,6 @@ export function NumbersProvider({
     const [numbers, setNumbers] = useState([])
     const [clickedFirstNumber, setClickedFirstNumber] = useState(null)
     const [clickedSecondNumber, setClickedSecondNumber] = useState(null)
-    const [isWin, setIsWin] = useState(null)
     const [isResetNumbers, setIsResetNumbers] = useState(false)
     const [isCompletedGame, setIsCompletedGame] = useState(false)
     const [currentTime, setCurrentTime] = useState(0)
@@ -27,7 +26,6 @@ export function NumbersProvider({
         setNumbers([])
         setClickedFirstNumber(null)
         setClickedSecondNumber(null)
-        setIsWin(null)
         setIsResetNumbers(false)
         setIsCompletedGame(false)
         setCurrentTime(0)
@@ -46,7 +44,6 @@ export function NumbersProvider({
     useEffect(() => {
         if ((clickedFirstNumber !== null && clickedSecondNumber !== null)) {
             if (clickedFirstNumber === clickedSecondNumber) {
-                setIsWin(true)
                 const firstNumberIndex = numbers.indexOf(clickedFirstNumber)
                 numbers.splice(firstNumberIndex, 1)
 
@@ -60,8 +57,6 @@ export function NumbersProvider({
                     if (numbers.length === 0) {
                         setIsCompletedGame(true)
                     }
-
-                    setIsWin(false)
                 }
             }
             setClickedFirstNumber(null)
@@ -84,7 +79,6 @@ export function NumbersProvider({
         clickedFirstNumber,
         setClickedFirstNumber,
         setClickedSecondNumber,
-        isWin,
         isResetNumbers,
         setIsResetNumbers,
         totalCardItems,

@@ -10,14 +10,25 @@
     border-radius: 0.5em;
     margin: 0;
     border: 1px solid white;
+    transition: 0.3s ease-in-out;
 }
 
 .card {
     background: rgb(10, 10, 117);
 }
 
+.card:hover {
+    background: rgb(77, 77, 161);
+    transition: 0.3s ease-in-out;
+}
+
 .clickedCard {
     background: white;
+}
+
+.clickedCard:hover {
+    background: lightgray;
+    opacity: 0.4;
 }
 
 .number {

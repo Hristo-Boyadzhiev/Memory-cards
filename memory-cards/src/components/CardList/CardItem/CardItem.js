@@ -27,7 +27,7 @@ export function CardItem({
             } else {
                 setClickedFirstNumber(numbers[index])
             }
-        }
+        } 
     }
 
     useEffect(() => {
@@ -37,7 +37,8 @@ export function CardItem({
         if (isResetNumbers) {
             setIsResetNumbers(false)
         }
-    }, [isWin, isResetNumbers, isNewGame])
+    // }, [isWin, isResetNumbers, isNewGame])
+}, [isResetNumbers, isNewGame])
 
     return (
         <>
