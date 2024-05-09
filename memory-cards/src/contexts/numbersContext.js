@@ -54,7 +54,7 @@ export function NumbersProvider({
 
                 if (totalCardItems > 0) {
                     setTotalCardItems(numbers.length)
-                    setIsWin(true)
+                    // setIsWin(true)
 
                     if (numbers.length === 0) {
                         setIsCompletedGame(true)
@@ -64,6 +64,7 @@ export function NumbersProvider({
             setClickedFirstNumber(null)
             setClickedSecondNumber(null)
             setIsResetNumbers(true)
+            // setIsWin(false)
         }
 
         if (currentTime !== 0) {

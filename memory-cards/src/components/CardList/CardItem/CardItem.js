@@ -32,19 +32,23 @@ export function CardItem({
     }
 
     useEffect(() => {
-        if (isWin) {
-            setIsVisible(false)
+        // if (isWin) {
+        //     setIsVisible(false)
+        //     setIsClicked(false)
+        //     setIsResetNumbers(false)
+        //     // setIsWin(false)
+        // } else {
+        //     setTimeout(() => {
+        //         setIsVisible(false)
+        //         setIsClicked(false)
+        //         setIsResetNumbers(false)
+        //     }, 500);
+        // }
+
+        setIsVisible(false)
             setIsClicked(false)
             setIsResetNumbers(false)
-            setIsWin(false)
-        } else {
-            setTimeout(() => {
-                setIsVisible(false)
-                setIsClicked(false)
-                setIsResetNumbers(false)
-            }, 500);
-        }
-  
+
     }, [isWin, isResetNumbers, isNewGame])
 
 
