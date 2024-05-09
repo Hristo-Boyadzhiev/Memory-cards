@@ -21,7 +21,7 @@ export function Timer() {
             setCurrentTimeForRendering(`${hours}:${minutes}:${seconds}`)
         }
 
-        if(isNewGame){
+        if (isNewGame) {
             reset()
             setCurrentTime(0)
         }

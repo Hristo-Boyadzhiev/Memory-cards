@@ -3,12 +3,9 @@ import { NumbersProvider } from "./contexts/numbersContext";
 
 function App() {
   return (
-    <>
-      <NumbersProvider>
-       <Game />
-      </NumbersProvider>
-    </>
-
+    <NumbersProvider>
+      <Game />
+    </NumbersProvider>
   );
 }
 

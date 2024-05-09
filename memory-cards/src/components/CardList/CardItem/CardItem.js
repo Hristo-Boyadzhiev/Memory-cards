@@ -7,7 +7,6 @@ export function CardItem({
 }) {
     const [isVisible, setIsVisible] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
-    const { isNewGame } = useNumbersContext()
     const {
         numbers,
         clickedFirstNumber,
@@ -16,7 +15,8 @@ export function CardItem({
         isResetNumbers,
         setIsResetNumbers,
         isWin,
-        setIsWin
+        setIsWin,
+        isNewGame
     } = useNumbersContext()
 
     function clickHandler(event) {
@@ -44,7 +44,9 @@ export function CardItem({
                 setIsResetNumbers(false)
             }, 500);
         }
+  
     }, [isWin, isResetNumbers, isNewGame])
+
 
     return (
         <>
@@ -60,7 +62,6 @@ export function CardItem({
                         <i className="fa-solid fa-star" style={{ fontSize: '3em', color: 'white' }}></i>
                     </div>
                 </div>
-
             }
         </>
     )

@@ -3,7 +3,6 @@ import { CardItem } from "./CardItem/CardItem";
 import styles from "./CardList.module.css"
 
 export function CardList(props) {
-
     const {
         totalCardItems,
         isCompletedGame,

@@ -13,9 +13,7 @@ export function NumbersProvider({
     const [numbers, setNumbers] = useState([])
     const [clickedFirstNumber, setClickedFirstNumber] = useState(null)
     const [clickedSecondNumber, setClickedSecondNumber] = useState(null)
-
     const [isWin, setIsWin] = useState(false)
-
     const [isResetNumbers, setIsResetNumbers] = useState(false)
     const [isCompletedGame, setIsCompletedGame] = useState(false)
     const [currentTime, setCurrentTime] = useState(0)
@@ -77,6 +75,8 @@ export function NumbersProvider({
     }, [clickedSecondNumber, currentTime])
 
     console.log(numbers)
+    // console.log(`first number:${clickedFirstNumber}`)
+    // console.log(`second number:${clickedSecondNumber}`)
 
     const numbersContextValues = {
         numbers,
