@@ -6,7 +6,7 @@ This is a responsive SPA (Single Page Application) created using React, with HTM
 "Memory Cards" is a game that helps us train our memory. The goal is to find pairs of cards with matching images, while remembering the positions of the cards that have been revealed previously.
 
 
-**The basic rules and stages of the game are as follows:**
+### The basic rules and stages
 
 **Preparation of the Game Field:**
 The game field consists of an equal number of cards, which are placed face down. Each card has an image, and each pair of cards has the same image. The cards are arranged in rows and columns, grouped into pairs.
