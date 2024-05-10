@@ -45,11 +45,23 @@ export function CardItem({
         //     }, 500);
         // }
 
-        setIsVisible(false)
-            setIsClicked(false)
-            setIsResetNumbers(false)
+        if (isResetNumbers) {
+            if (isWin) {
+      
+            }
 
-    }, [isWin, isResetNumbers, isNewGame])
+
+            // if (isClicked) {
+            //     setIsClicked(false)
+
+            //     setTimeout(() => {
+            //         setIsVisible(false)
+            //         setIsResetNumbers(false)
+            //     }, 500);
+            // }
+        }
+
+    }, [isResetNumbers, isNewGame])
 
 
     return (

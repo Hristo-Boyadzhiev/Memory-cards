@@ -52,6 +52,11 @@ export function NumbersProvider({
                 numbers.splice(secondNumberIndex, 1)
                 setNumbers(numbers)
 
+                setIsWin(true)
+                setClickedFirstNumber(null)
+                setClickedSecondNumber(null)
+                setIsResetNumbers(true)
+                
                 if (totalCardItems > 0) {
                     setTotalCardItems(numbers.length)
                     // setIsWin(true)
@@ -60,10 +65,14 @@ export function NumbersProvider({
                         setIsCompletedGame(true)
                     }
                 }
+            } else {
+                setClickedFirstNumber(null)
+                setClickedSecondNumber(null)
+                setIsResetNumbers(true)
             }
-            setClickedFirstNumber(null)
-            setClickedSecondNumber(null)
-            setIsResetNumbers(true)
+            // setClickedFirstNumber(null)
+            // setClickedSecondNumber(null)
+            // setIsResetNumbers(true)
             // setIsWin(false)
         }
 
