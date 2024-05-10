@@ -19,6 +19,8 @@ export function CardItem({
         isNewGame
     } = useNumbersContext()
 
+    const [isAfterClick, setIsAfterClick] = useState(false)
+
     function clickHandler(event) {
         if (!isResetNumbers && !isVisible && !isClicked) {
             setIsVisible(true)
@@ -47,18 +49,21 @@ export function CardItem({
 
         if (isResetNumbers) {
             if (isWin) {
-      
+                setIsVisible(false)
+                setIsClicked(false)
+                setIsResetNumbers(false)
+                setIsWin(false)
+            } else {
+                if (isClicked) {
+                    setTimeout(() => {
+                        setIsVisible(false)         
+                        setIsClicked(false)
+                    }, 500);
+                } else {
+                    setIsVisible(false)
+                    setIsClicked(false)
+                }
             }
-
-
-            // if (isClicked) {
-            //     setIsClicked(false)
-
-            //     setTimeout(() => {
-            //         setIsVisible(false)
-            //         setIsResetNumbers(false)
-            //     }, 500);
-            // }
         }
 
     }, [isResetNumbers, isNewGame])

@@ -53,27 +53,36 @@ export function NumbersProvider({
                 setNumbers(numbers)
 
                 setIsWin(true)
-                setClickedFirstNumber(null)
-                setClickedSecondNumber(null)
+                // setClickedFirstNumber(null)
+                // setClickedSecondNumber(null)
                 setIsResetNumbers(true)
                 
                 if (totalCardItems > 0) {
                     setTotalCardItems(numbers.length)
-                    // setIsWin(true)
 
                     if (numbers.length === 0) {
                         setIsCompletedGame(true)
                     }
                 }
             } else {
-                setClickedFirstNumber(null)
-                setClickedSecondNumber(null)
-                setIsResetNumbers(true)
+                // setClickedFirstNumber(null)
+                // setClickedSecondNumber(null)
+                // setIsResetNumbers(true)
+                // setTimeout(() => {
+                //     setIsResetNumbers(false)
+                // }, 500);
             }
             // setClickedFirstNumber(null)
             // setClickedSecondNumber(null)
             // setIsResetNumbers(true)
             // setIsWin(false)
+
+            setClickedFirstNumber(null)
+            setClickedSecondNumber(null)
+            setIsResetNumbers(true)
+            setTimeout(() => {
+                setIsResetNumbers(false)
+            }, 500);
         }
 
         if (currentTime !== 0) {
