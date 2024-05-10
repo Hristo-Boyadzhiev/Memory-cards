@@ -31,14 +31,19 @@ export function NumbersProvider({
         setCurrentTime(0)
         setIsNewGame(false)
 
-        const newPairs = []
+        const uniqueNumbersSet = new Set();
 
-        for (let i = 0; i < totalCardItems; i += 2) {
+        while (uniqueNumbersSet.size < totalCardItems / 2) {
             const randomNumber = getRandomNumberInRange(1, 99);
-            newPairs.push(randomNumber, randomNumber)
+            uniqueNumbersSet.add(randomNumber)
         }
-        const shuffledPairs = newPairs.sort(() => Math.random() - 0.5);
-        setNumbers(shuffledPairs)
+
+        let uniqueNumbersArray = Array.from(uniqueNumbersSet)
+
+        let pairsArray = uniqueNumbersArray.concat(uniqueNumbersArray)
+
+        const shuffledPairs = pairsArray.sort(() => Math.random() - 0.5);
+        setNumbers(shuffledPairs);
     }, [isNewGame])
 
     useEffect(() => {
@@ -48,12 +53,12 @@ export function NumbersProvider({
                 const firstNumberIndex = numbers.indexOf(clickedFirstNumber)
                 numbers.splice(firstNumberIndex, 1)
 
-                const secondNumberIndex = numbers.lastIndexOf(clickedSecondNumber)
+                const secondNumberIndex = numbers.indexOf(clickedSecondNumber)
                 numbers.splice(secondNumberIndex, 1)
-                
+
                 setNumbers(numbers)
                 setIsWin(true)
-                
+
                 if (totalCardItems > 0) {
                     setTotalCardItems(numbers.length)
 
@@ -62,12 +67,12 @@ export function NumbersProvider({
                     }
                 }
             }
-                setClickedFirstNumber(null)
-                setClickedSecondNumber(null)
-                setIsResetNumbers(true)
-                setTimeout(() => {
-                    setIsResetNumbers(false)
-                }, 500);
+            setClickedFirstNumber(null)
+            setClickedSecondNumber(null)
+            setIsResetNumbers(true)
+            setTimeout(() => {
+                setIsResetNumbers(false)
+            }, 500);
         }
 
         if (currentTime !== 0) {
@@ -78,8 +83,6 @@ export function NumbersProvider({
         }
     }, [clickedSecondNumber, currentTime])
 
-    console.log(numbers)
-
     const numbersContextValues = {
         numbers,
         clickedFirstNumber,
@@ -88,7 +91,6 @@ export function NumbersProvider({
         isWin,
         setIsWin,
         isResetNumbers,
-        setIsResetNumbers,
         totalCardItems,
         isCompletedGame,
         isNewGame,
