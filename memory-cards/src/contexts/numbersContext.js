@@ -50,12 +50,9 @@ export function NumbersProvider({
 
                 const secondNumberIndex = numbers.lastIndexOf(clickedSecondNumber)
                 numbers.splice(secondNumberIndex, 1)
+                
                 setNumbers(numbers)
-
                 setIsWin(true)
-                // setClickedFirstNumber(null)
-                // setClickedSecondNumber(null)
-                setIsResetNumbers(true)
                 
                 if (totalCardItems > 0) {
                     setTotalCardItems(numbers.length)
@@ -64,25 +61,13 @@ export function NumbersProvider({
                         setIsCompletedGame(true)
                     }
                 }
-            } else {
-                // setClickedFirstNumber(null)
-                // setClickedSecondNumber(null)
-                // setIsResetNumbers(true)
-                // setTimeout(() => {
-                //     setIsResetNumbers(false)
-                // }, 500);
             }
-            // setClickedFirstNumber(null)
-            // setClickedSecondNumber(null)
-            // setIsResetNumbers(true)
-            // setIsWin(false)
-
-            setClickedFirstNumber(null)
-            setClickedSecondNumber(null)
-            setIsResetNumbers(true)
-            setTimeout(() => {
-                setIsResetNumbers(false)
-            }, 500);
+                setClickedFirstNumber(null)
+                setClickedSecondNumber(null)
+                setIsResetNumbers(true)
+                setTimeout(() => {
+                    setIsResetNumbers(false)
+                }, 500);
         }
 
         if (currentTime !== 0) {
@@ -94,8 +79,6 @@ export function NumbersProvider({
     }, [clickedSecondNumber, currentTime])
 
     console.log(numbers)
-    // console.log(`first number:${clickedFirstNumber}`)
-    // console.log(`second number:${clickedSecondNumber}`)
 
     const numbersContextValues = {
         numbers,
