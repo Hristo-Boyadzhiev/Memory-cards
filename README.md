@@ -42,7 +42,7 @@ The goal of the game is to uncover all pairs of cards with matching images. When
 
 ### Libraries
 - React: A JavaScript library for building user interfaces. It is used under the MIT License. You can find it [here](https://github.com/facebook/react/blob/main/LICENSE);
-- React-timer-hook: A custom React hook for managing timers and intervals. It is used under the MIT License. You can find it [here](https://github.com/amrlabib/react-timer-hook?tab=MIT-1-ov-file#readme)
+- React-timer-hook: A custom React hook for managing timers and intervals. It is used under the MIT License. You can find it [here](https://github.com/amrlabib/react-timer-hook/blob/master/LICENSE)
   
 ### Approaches & Techniques
 - Semantic HTML;
