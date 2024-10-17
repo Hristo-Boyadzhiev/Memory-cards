@@ -9,6 +9,7 @@
   - [Matching Check](#matching-check)
   - [Winning Condition](#winning-condition)
 - [Tech Stack](#tech-stack)
+- [License](#license)
 - [Installation and Usage](#installation-and-usage)
 
 ## Overview
